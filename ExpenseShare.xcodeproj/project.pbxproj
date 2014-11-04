@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01BABAF11A0960A1008964F7 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BABAF01A0960A1008964F7 /* AddGroupViewController.m */; };
+		01BABAF41A0960AE008964F7 /* AddMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BABAF31A0960AE008964F7 /* AddMemberViewController.m */; };
+		01C37E111A08A4AB0015BAAC /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C37E101A08A4AB0015BAAC /* RegisterViewController.m */; };
+		01C37E141A08A4BB0015BAAC /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C37E131A08A4BB0015BAAC /* GroupsViewController.m */; };
 		01E9ECBE1A05F2A000F3B848 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECBD1A05F2A000F3B848 /* main.m */; };
 		01E9ECC11A05F2A000F3B848 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECC01A05F2A000F3B848 /* AppDelegate.m */; };
 		01E9ECC41A05F2A000F3B848 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECC31A05F2A000F3B848 /* ViewController.m */; };
@@ -14,6 +18,10 @@
 		01E9ECC91A05F2A000F3B848 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E9ECC81A05F2A000F3B848 /* Images.xcassets */; };
 		01E9ECCC1A05F2A000F3B848 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01E9ECCA1A05F2A000F3B848 /* LaunchScreen.xib */; };
 		01E9ECD81A05F2A100F3B848 /* ExpenseShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECD71A05F2A100F3B848 /* ExpenseShareTests.m */; };
+		01E9ECE31A0604C900F3B848 /* AddExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECE21A0604C900F3B848 /* AddExpenseViewController.m */; };
+		01E9ECE61A06053900F3B848 /* ReimburseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECE51A06053900F3B848 /* ReimburseViewController.m */; };
+		01E9ECE91A06063B00F3B848 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECE81A06063B00F3B848 /* ReportViewController.m */; };
+		01E9ECEC1A06065C00F3B848 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECEB1A06065C00F3B848 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +35,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01BABAEF1A0960A1008964F7 /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupViewController.h; sourceTree = "<group>"; };
+		01BABAF01A0960A1008964F7 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
+		01BABAF21A0960AE008964F7 /* AddMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberViewController.h; sourceTree = "<group>"; };
+		01BABAF31A0960AE008964F7 /* AddMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberViewController.m; sourceTree = "<group>"; };
+		01C37E0F1A08A4AB0015BAAC /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		01C37E101A08A4AB0015BAAC /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		01C37E121A08A4BB0015BAAC /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
+		01C37E131A08A4BB0015BAAC /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
 		01E9ECB81A05F2A000F3B848 /* ExpenseShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E9ECBC1A05F2A000F3B848 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E9ECBD1A05F2A000F3B848 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +56,14 @@
 		01E9ECD11A05F2A100F3B848 /* ExpenseShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpenseShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E9ECD61A05F2A100F3B848 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E9ECD71A05F2A100F3B848 /* ExpenseShareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpenseShareTests.m; sourceTree = "<group>"; };
+		01E9ECE11A0604C900F3B848 /* AddExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddExpenseViewController.h; sourceTree = "<group>"; };
+		01E9ECE21A0604C900F3B848 /* AddExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExpenseViewController.m; sourceTree = "<group>"; };
+		01E9ECE41A06053900F3B848 /* ReimburseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimburseViewController.h; sourceTree = "<group>"; };
+		01E9ECE51A06053900F3B848 /* ReimburseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimburseViewController.m; sourceTree = "<group>"; };
+		01E9ECE71A06063B00F3B848 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
+		01E9ECE81A06063B00F3B848 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
+		01E9ECEA1A06065C00F3B848 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		01E9ECEB1A06065C00F3B848 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +84,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01BABAF51A09700A008964F7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				01BABAEF1A0960A1008964F7 /* AddGroupViewController.h */,
+				01BABAF01A0960A1008964F7 /* AddGroupViewController.m */,
+				01BABAF21A0960AE008964F7 /* AddMemberViewController.h */,
+				01BABAF31A0960AE008964F7 /* AddMemberViewController.m */,
+				01C37E0F1A08A4AB0015BAAC /* RegisterViewController.h */,
+				01C37E101A08A4AB0015BAAC /* RegisterViewController.m */,
+				01C37E121A08A4BB0015BAAC /* GroupsViewController.h */,
+				01C37E131A08A4BB0015BAAC /* GroupsViewController.m */,
+				01E9ECE11A0604C900F3B848 /* AddExpenseViewController.h */,
+				01E9ECE21A0604C900F3B848 /* AddExpenseViewController.m */,
+				01E9ECE41A06053900F3B848 /* ReimburseViewController.h */,
+				01E9ECE51A06053900F3B848 /* ReimburseViewController.m */,
+				01E9ECE71A06063B00F3B848 /* ReportViewController.h */,
+				01E9ECE81A06063B00F3B848 /* ReportViewController.m */,
+				01E9ECEA1A06065C00F3B848 /* MainViewController.h */,
+				01E9ECEB1A06065C00F3B848 /* MainViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		01E9ECAF1A05F2A000F3B848 = {
 			isa = PBXGroup;
 			children = (
@@ -81,10 +128,7 @@
 		01E9ECBA1A05F2A000F3B848 /* ExpenseShare */ = {
 			isa = PBXGroup;
 			children = (
-				01E9ECBF1A05F2A000F3B848 /* AppDelegate.h */,
-				01E9ECC01A05F2A000F3B848 /* AppDelegate.m */,
-				01E9ECC21A05F2A000F3B848 /* ViewController.h */,
-				01E9ECC31A05F2A000F3B848 /* ViewController.m */,
+				01BABAF51A09700A008964F7 /* View Controllers */,
 				01E9ECC51A05F2A000F3B848 /* Main.storyboard */,
 				01E9ECC81A05F2A000F3B848 /* Images.xcassets */,
 				01E9ECCA1A05F2A000F3B848 /* LaunchScreen.xib */,
@@ -96,6 +140,10 @@
 		01E9ECBB1A05F2A000F3B848 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				01E9ECBF1A05F2A000F3B848 /* AppDelegate.h */,
+				01E9ECC01A05F2A000F3B848 /* AppDelegate.m */,
+				01E9ECC21A05F2A000F3B848 /* ViewController.h */,
+				01E9ECC31A05F2A000F3B848 /* ViewController.m */,
 				01E9ECBC1A05F2A000F3B848 /* Info.plist */,
 				01E9ECBD1A05F2A000F3B848 /* main.m */,
 			);
@@ -219,9 +267,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01BABAF41A0960AE008964F7 /* AddMemberViewController.m in Sources */,
 				01E9ECC41A05F2A000F3B848 /* ViewController.m in Sources */,
+				01E9ECE31A0604C900F3B848 /* AddExpenseViewController.m in Sources */,
+				01E9ECE91A06063B00F3B848 /* ReportViewController.m in Sources */,
 				01E9ECC11A05F2A000F3B848 /* AppDelegate.m in Sources */,
+				01C37E141A08A4BB0015BAAC /* GroupsViewController.m in Sources */,
+				01E9ECEC1A06065C00F3B848 /* MainViewController.m in Sources */,
+				01BABAF11A0960A1008964F7 /* AddGroupViewController.m in Sources */,
+				01E9ECE61A06053900F3B848 /* ReimburseViewController.m in Sources */,
 				01E9ECBE1A05F2A000F3B848 /* main.m in Sources */,
+				01C37E111A08A4AB0015BAAC /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +468,7 @@
 				01E9ECDD1A05F2A100F3B848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01E9ECDE1A05F2A100F3B848 /* Build configuration list for PBXNativeTarget "ExpenseShareTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +477,7 @@
 				01E9ECE01A05F2A100F3B848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
