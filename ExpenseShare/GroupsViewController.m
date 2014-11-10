@@ -7,6 +7,7 @@
 //
 
 #import "GroupsViewController.h"
+#import "ESSConnection.h"
 
 @interface GroupsViewController ()
 
@@ -19,7 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    ESSConnection *connection = [ESSConnection connection];
+    [connection connect];
+    if(connection.userID == -1) {
+        [self performSegueWithIdentifier:@"SegToRegister" sender:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

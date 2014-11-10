@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CIDR_MODULE" version="4">
   <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../ESServer/ESPacket.h">
+      <sourceFolder url="file://$MODULE_DIR$/../ESServer/ESPacket.h" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../ESServer/ESPacket.m">
+      <sourceFolder url="file://$MODULE_DIR$/../ESServer/ESPacket.m" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

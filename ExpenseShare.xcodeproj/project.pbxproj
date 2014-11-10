@@ -22,6 +22,12 @@
 		01E9ECE61A06053900F3B848 /* ReimburseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECE51A06053900F3B848 /* ReimburseViewController.m */; };
 		01E9ECE91A06063B00F3B848 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECE81A06063B00F3B848 /* ReportViewController.m */; };
 		01E9ECEC1A06065C00F3B848 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9ECEB1A06065C00F3B848 /* MainViewController.m */; };
+		696C10483B66DCC3E5A40886 /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C1EA31C23746C9DCF4AE8 /* Expense.m */; };
+		696C132CF6E971470CC72A52 /* ESSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C18C40CAB10196D44383C /* ESSConnection.m */; };
+		696C17959D013A738D904080 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C193E5D7A1F0C9927F010 /* GCDAsyncSocket.m */; };
+		696C18983F8DA5752FEFF627 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C157B22C9023533B4129F /* Group.m */; };
+		696C1C0816F86FDB00C2BF1E /* ESPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C10CD56C3B6678B195D96 /* ESPacket.m */; };
+		696C1F0E8A1758C921F9A1F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 696C156CF6F2D6DC441D596F /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +70,18 @@
 		01E9ECE81A06063B00F3B848 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		01E9ECEA1A06065C00F3B848 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		01E9ECEB1A06065C00F3B848 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		696C10CD56C3B6678B195D96 /* ESPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESPacket.m; path = ../../ESServer/ESPacket.m; sourceTree = "<group>"; };
+		696C12CE795920EE685C89CC /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		696C156CF6F2D6DC441D596F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		696C157B22C9023533B4129F /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		696C15DE21FBD2E6B6DC144A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		696C18C40CAB10196D44383C /* ESSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSConnection.m; sourceTree = "<group>"; };
+		696C193E5D7A1F0C9927F010 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		696C1A6F0EE7D2A0AB59A1A1 /* ESPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESPacket.h; path = ../../ESServer/ESPacket.h; sourceTree = "<group>"; };
+		696C1BEB8B187F76E856430D /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		696C1BF39BBA95CA716195E8 /* ESSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSConnection.h; sourceTree = "<group>"; };
+		696C1C7B5E2879AB64E07FAC /* Expense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expense.h; sourceTree = "<group>"; };
+		696C1EA31C23746C9DCF4AE8 /* Expense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expense.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +151,13 @@
 				01E9ECC81A05F2A000F3B848 /* Images.xcassets */,
 				01E9ECCA1A05F2A000F3B848 /* LaunchScreen.xib */,
 				01E9ECBB1A05F2A000F3B848 /* Supporting Files */,
+				696C18C40CAB10196D44383C /* ESSConnection.m */,
+				696C1BF39BBA95CA716195E8 /* ESSConnection.h */,
+				696C12CE795920EE685C89CC /* GCDAsyncSocket.h */,
+				696C193E5D7A1F0C9927F010 /* GCDAsyncSocket.m */,
+				696C1A6F0EE7D2A0AB59A1A1 /* ESPacket.h */,
+				696C10CD56C3B6678B195D96 /* ESPacket.m */,
+				696C1DE812754D4FB29CA851 /* Objects */,
 			);
 			path = ExpenseShare;
 			sourceTree = "<group>";
@@ -165,6 +190,19 @@
 				01E9ECD61A05F2A100F3B848 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		696C1DE812754D4FB29CA851 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				696C156CF6F2D6DC441D596F /* User.m */,
+				696C15DE21FBD2E6B6DC144A /* User.h */,
+				696C157B22C9023533B4129F /* Group.m */,
+				696C1BEB8B187F76E856430D /* Group.h */,
+				696C1EA31C23746C9DCF4AE8 /* Expense.m */,
+				696C1C7B5E2879AB64E07FAC /* Expense.h */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +316,12 @@
 				01E9ECE61A06053900F3B848 /* ReimburseViewController.m in Sources */,
 				01E9ECBE1A05F2A000F3B848 /* main.m in Sources */,
 				01C37E111A08A4AB0015BAAC /* RegisterViewController.m in Sources */,
+				696C132CF6E971470CC72A52 /* ESSConnection.m in Sources */,
+				696C17959D013A738D904080 /* GCDAsyncSocket.m in Sources */,
+				696C1C0816F86FDB00C2BF1E /* ESPacket.m in Sources */,
+				696C1F0E8A1758C921F9A1F9 /* User.m in Sources */,
+				696C18983F8DA5752FEFF627 /* Group.m in Sources */,
+				696C10483B66DCC3E5A40886 /* Expense.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

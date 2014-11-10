@@ -14,6 +14,10 @@
 
 @implementation AppDelegate
 
++ (void)initialize {
+    NSDictionary *defaults = @{@"userID" : @(-1)};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

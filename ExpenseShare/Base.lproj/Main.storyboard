@@ -139,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUj-fu-zMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012.5" y="-1199"/>
+            <point key="canvasLocation" x="1642.5" y="-1227"/>
         </scene>
         <!--Report-->
         <scene sceneID="ehe-Dr-B6h">
@@ -171,14 +171,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYq-R2-cQS">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="109" width="368" height="30"/>
-                                </variation>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfo-l4-YKH">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Register">
@@ -191,18 +183,26 @@
                                     <action selector="registerPressed:" destination="deF-Tf-nHD" eventType="touchUpInside" id="HoE-AQ-NAb"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYq-R2-cQS">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="60" y="110" width="280" height="30"/>
+                                </variation>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="OYq-R2-cQS"/>
                                 <exclude reference="sfo-l4-YKH"/>
+                                <exclude reference="OYq-R2-cQS"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="OYq-R2-cQS"/>
                                 <include reference="sfo-l4-YKH"/>
+                                <include reference="OYq-R2-cQS"/>
                             </mask>
                         </variation>
                     </view>
@@ -212,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0X-s8-4LS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1222.5" y="-1199"/>
+            <point key="canvasLocation" x="-1311" y="-972"/>
         </scene>
         <!--Add Group-->
         <scene sceneID="cCX-EC-DLB">
@@ -232,7 +232,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="155" y="231" width="90" height="30"/>
+                                    <rect key="frame" x="232" y="125" width="90" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="Ff1-hj-RQb" kind="show" identifier="SegToAddMember" id="kKx-fb-f9K"/>
@@ -254,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hN-kS-CoI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-219" y="-1192"/>
+            <point key="canvasLocation" x="381" y="-1192"/>
         </scene>
         <!--Groups-->
         <scene sceneID="8nv-2N-E0g">
@@ -309,6 +309,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Groups" id="5GA-SE-heA"/>
+                    <connections>
+                        <segue destination="deF-Tf-nHD" kind="presentation" identifier="SegToRegister" id="Myg-85-pUa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIN-VF-XKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

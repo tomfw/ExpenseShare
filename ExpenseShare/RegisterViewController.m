@@ -7,18 +7,32 @@
 //
 
 #import "RegisterViewController.h"
+#import "ESSConnection.h"
+#import "ESPacket.h"
 
-@interface RegisterViewController ()
+@interface RegisterViewController () <ESSConnectionDelegate>
 
 @end
 
 @implementation RegisterViewController
+
+- (void)readPacket:(ESPacket *)packet onConnection:(ESSConnection *)connection {
+    if (packet.code == ESPACKET_ASSIGN_USERID) {
+        [[NSUserDefaults standardUserDefaults] setValue:packet.object forKey:@"userID"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"Saved new id");
+    }
+}
+
 - (IBAction)registerPressed:(id)sender {
+    ESSConnection *conn = [ESSConnection connection];
+    conn.delegate = self;
+    [conn sendPacket:[ESPacket packetWithCode:ESPACKET_REGISTER object:self.userNameField.text]];
+    [conn readPacket];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
