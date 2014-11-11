@@ -21,8 +21,13 @@
 static ESSConnection *_connection = nil;
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
+
+    NSMutableData *message = [[NSMutableData alloc] initWithData:data];
+    NSRange range = NSMakeRange(message.length - 4, 4);
+    [message replaceBytesInRange:range withBytes:NULL length:0];
+
     if(tag == TAG_READ_PACKET) {
-        ESPacket *packet = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        ESPacket *packet = [NSKeyedUnarchiver unarchiveObjectWithData:message];
         [self.delegate readPacket:packet onConnection:self];
     }
 }
@@ -35,18 +40,15 @@ static ESSConnection *_connection = nil;
 }
 
 -(void)sendPacket:(ESPacket *)packet {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:packet];
-    [self.socket writeData:data withTimeout:30 tag:TAG_SEND_PACKET];
+    [packet sendOnSocket:self.socket withTimeOut:30];
 }
 
 -(void)readPacket {
-    [self.socket readDataWithTimeout:30 tag:TAG_READ_PACKET];
+    [ESPacket readOnSocket:self.socket withTimeOut:30];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port {
     NSLog(@"We are connnnnnnected!");
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@(self.userID)];
-    [sock writeData:data withTimeout:30 tag:TAG_WRITE_USER_ID];
 }
 -(void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
     if (err) {
@@ -80,6 +82,10 @@ static ESSConnection *_connection = nil;
         if (![self.socket connectToHost:@"192.168.1.254" onPort:7373 error:&error]) {
             NSLog(@"Error connecting: %@", error);
         }
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@(self.userID)];
+        NSMutableData *message = [[NSMutableData alloc] initWithData:data];
+        [message appendData:[ESPacket terminator]];
+        [self.socket writeData:message withTimeout:30 tag:TAG_WRITE_USER_ID];
     } else {
         NSLog(@"Already connected!");
     }

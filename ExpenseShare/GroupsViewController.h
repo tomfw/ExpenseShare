@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ESSConnection.h"
 
-@interface GroupsViewController : UIViewController
+@interface GroupsViewController : UIViewController <ESSConnectionDelegate>
 
 @end
