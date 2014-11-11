@@ -21,6 +21,9 @@
         [[NSUserDefaults standardUserDefaults] setValue:packet.object forKey:@"userID"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"Saved new id");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES completion:^{}];
+        });
     }
 }
 
