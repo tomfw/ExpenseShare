@@ -11,7 +11,6 @@
 @interface Expense : NSObject <NSCoding>
 
 @property(readonly, nonatomic) NSInteger expenseID;
-
 @property(nonatomic) NSInteger grpID;
 @property(nonatomic) NSInteger userID;
 @property(strong, nonatomic) NSString *item;

@@ -7,15 +7,38 @@
 //
 
 #import "ReimburseViewController.h"
+#import "Reimbursement.h"
+#import "Group.h"
+#import "ESSConnection.h"
+#import "ESPacket.h"
 
 @interface ReimburseViewController ()
 
 @end
 
 @implementation ReimburseViewController
+- (void)readPacket:(ESPacket *)packet onConnection:(ESSConnection *)connection {
+    if(packet.code == ESPACKET_OK) {
+        NSLog(@"We saved our reimbursement!");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    }
+}
 
 
 - (IBAction)savePressed:(id)sender {
+    Reimbursement *new = [Reimbursement reimbursementFrom:self.userID to:0 inGroup:self.group.grpID];
+    new.amount = [[[NSNumberFormatter new] numberFromString:self.amtField.text] doubleValue];
+    new.memo = self.memoField.text;
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth fromDate:[NSDate date]];
+    new.month = components.month;
+    new.year = components.year;
+
+    ESSConnection *connection = [ESSConnection connection];
+    [connection sendPacket:[ESPacket packetWithCode:ESPACKET_ADD_REIMBURSMENT object:new]];
+    [connection readPacket];
+    connection.delegate = self;
 }
 
 - (void)viewDidLoad {

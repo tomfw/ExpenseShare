@@ -10,4 +10,7 @@
 
 @interface AddGroupViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *groupNameField;
+@property (weak, nonatomic) IBOutlet UITextField *groupDescriptionField;
+
 @end

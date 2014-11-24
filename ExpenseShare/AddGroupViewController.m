@@ -7,12 +7,37 @@
 //
 
 #import "AddGroupViewController.h"
+#import "ESSConnection.h"
+#import "ESPacket.h"
+#import "Group.h"
 
-@interface AddGroupViewController ()
+@interface AddGroupViewController () <ESSConnectionDelegate>
 
 @end
 
 @implementation AddGroupViewController
+- (void)readPacket:(ESPacket *)packet onConnection:(ESSConnection *)connection {
+    if(packet.code == ESPACKET_OK) {
+        NSLog(@"Added a group!");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    } else {
+        NSLog(@"Something strange has happened");
+    }
+}
+
+- (IBAction)addPressed:(id)sender {
+    if(self.groupNameField.text ) {
+        ESSConnection *connection = [ESSConnection connection];
+        connection.delegate = self;
+        [connection sendPacket:[ESPacket packetWithCode:ESPACKET_ADD_GROUP object:[Group groupWithName:self.groupNameField.text description:self.groupDescriptionField.text]]];
+        [connection readPacket];
+    } else {
+        NSLog(@"Name field cannot be blank");
+
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

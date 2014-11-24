@@ -7,19 +7,48 @@
 //
 
 #import "AddExpenseViewController.h"
+#import "Expense.h"
+#import "ESSConnection.h"
+#import "ESPacket.h"
 
-@interface AddExpenseViewController ()
-
+@interface AddExpenseViewController () <ESSConnectionDelegate>
 @end
 
 @implementation AddExpenseViewController
+- (IBAction)stoppedEditing:(id)sender {
+    [sender resignFirstResponder];
+}
+
+- (void)readPacket:(ESPacket *)packet onConnection:(ESSConnection *)connection {
+    if(packet.code == ESPACKET_OK) {
+        NSLog(@"We wrote an expense!");
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    }
+}
 
 - (IBAction)addExpensePressed:(id)sender {
-    NSLog(@"Add expense");
+    Expense *new = [Expense expenseInGroup:self.grpID byUser:self.userID];
+
+    NSNumber *amt = [[NSNumberFormatter new] numberFromString:self.amtField.text];
+    new.amount = amt.doubleValue;
+
+    NSLog(@"Amount: %@",self.amtField.text);
+    new.item = self.itemField.text;
+    new.memo = self.memoField.text;
+    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitYear | NSCalendarUnitMonth fromDate:[NSDate date]];
+    new.month = components.month;
+    new.year = components.year;
+
+    ESSConnection *connection = [ESSConnection connection];
+    connection.delegate = self;
+    [connection sendPacket:[ESPacket packetWithCode:ESPACKET_ADD_EXPENSE object:new]];
+    [connection readPacket];
 }
 
 - (IBAction)cancelPressed:(id)sender {
-    
 }
 
 - (void)viewDidLoad {

@@ -11,6 +11,7 @@
 @property (nonatomic) NSInteger grpID;
 @property (strong, nonatomic) NSString *grpName;
 @property (strong, nonatomic) NSString *grpDescription;
+@property (strong, nonatomic) NSMapTable *users;
 @end
 
 @implementation Group
@@ -18,6 +19,7 @@
     [coder encodeInteger:self.grpID forKey:@"grpID"];
     [coder encodeObject:self.grpName forKey:@"grpName"];
     [coder encodeObject:self.grpDescription forKey:@"grpDescription"];
+    [coder encodeObject:self.users forKey:@"users"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -25,6 +27,7 @@
         _grpID = [coder decodeIntegerForKey:@"grpID"];
         _grpName = [coder decodeObjectForKey:@"grpName"];
         _grpDescription = [coder decodeObjectForKey:@"grpDescription"];
+        _users = [coder decodeObjectForKey:@"users"];
     }
     return self;
 }

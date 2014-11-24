@@ -15,6 +15,7 @@
 @interface ESSConnection () <GCDAsyncSocketDelegate>
 @property(nonatomic, strong) GCDAsyncSocket *socket;
 @property (nonatomic) NSInteger userID;
+@property (strong, nonatomic) NSTimer *timer;
 @end
 
 @implementation ESSConnection
@@ -28,6 +29,9 @@ static ESSConnection *_connection = nil;
 
     if(tag == TAG_READ_PACKET) {
         ESPacket *packet = [NSKeyedUnarchiver unarchiveObjectWithData:message];
+        if (packet.code == ESPACKET_UPDATE_HASH) {
+            NSLog(@"Got the hash for the current group:%@",packet.object);
+        }
         [self.delegate readPacket:packet onConnection:self];
     }
 }
@@ -49,7 +53,22 @@ static ESSConnection *_connection = nil;
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port {
     NSLog(@"We are connnnnnnected!");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(update) userInfo:nil repeats:YES];
+    });
 }
+
+- (void)update {
+    NSLog(@"Hello? update?");
+    if(self.grpID > 1) {
+        NSLog(@"We need to update some stuff!");
+        [self sendPacket:[ESPacket packetWithCode:ESPACKET_REQUEST_UPDATE object:@(self.grpID)]];
+        [self readPacket];
+    } else {
+        [self sendPacket:[ESPacket packetWithCode:ESPACKET_OK object:nil]];
+    }
+}
+
 -(void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
     if (err) {
         NSLog(@"Error: %@",err);

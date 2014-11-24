@@ -18,6 +18,7 @@
 
 @property (readonly) BOOL isConnected;
 @property (readonly, nonatomic) NSInteger userID;
+@property (nonatomic) NSInteger grpID;
 @property (weak, nonatomic) id <ESSConnectionDelegate>delegate;
 
 + (ESSConnection *)connection;

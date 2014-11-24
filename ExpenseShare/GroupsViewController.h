@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ESSConnection.h"
 
-@interface GroupsViewController : UIViewController <ESSConnectionDelegate>
+@interface GroupsViewController : UIViewController <ESSConnectionDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

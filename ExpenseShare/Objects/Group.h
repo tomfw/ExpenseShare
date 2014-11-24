@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) NSInteger grpID;
 @property(readonly, nonatomic) NSString *grpName;
 @property(readonly, nonatomic) NSString *grpDescription;
+@property(readonly, nonatomic) NSMapTable *users;
 
 +(Group *)groupWithName:(NSString *)name description:(NSString *)description;
 +(Group *)groupWithID:(NSInteger)id;

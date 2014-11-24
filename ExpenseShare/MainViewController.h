@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+@class Group;
 
+@interface MainViewController : UIViewController
+@property (strong, nonatomic) Group *group;
 @end
