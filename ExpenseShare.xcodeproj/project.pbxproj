@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		018500551A258FAB00B039A6 /* ExpenseChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 018500541A258FAB00B039A6 /* ExpenseChart.m */; };
+		018500591A25E60000B039A6 /* ReimbursementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 018500571A25E60000B039A6 /* ReimbursementCell.m */; };
+		0185005A1A25E60000B039A6 /* ReimbursementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018500581A25E60000B039A6 /* ReimbursementCell.xib */; };
+		0185005C1A25E74100B039A6 /* black-double-arrow-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 0185005B1A25E74100B039A6 /* black-double-arrow-hi.png */; };
+		018500601A25EF7600B039A6 /* ExpenseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0185005E1A25EF7600B039A6 /* ExpenseCell.m */; };
+		018500611A25EF7600B039A6 /* ExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0185005F1A25EF7600B039A6 /* ExpenseCell.xib */; };
+		018500631A25F0CD00B039A6 /* Right-Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 018500621A25F0CD00B039A6 /* Right-Arrow.png */; };
+		018500671A25F7F400B039A6 /* TotalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 018500651A25F7F400B039A6 /* TotalCell.m */; };
+		018500681A25F7F400B039A6 /* TotalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018500661A25F7F400B039A6 /* TotalCell.xib */; };
 		01BABAF11A0960A1008964F7 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BABAF01A0960A1008964F7 /* AddGroupViewController.m */; };
 		01BABAF41A0960AE008964F7 /* AddMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BABAF31A0960AE008964F7 /* AddMemberViewController.m */; };
 		01C37E111A08A4AB0015BAAC /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C37E101A08A4AB0015BAAC /* RegisterViewController.m */; };
@@ -43,6 +52,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		018500531A258FAB00B039A6 /* ExpenseChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseChart.h; sourceTree = "<group>"; };
+		018500541A258FAB00B039A6 /* ExpenseChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseChart.m; sourceTree = "<group>"; };
+		018500561A25E60000B039A6 /* ReimbursementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimbursementCell.h; sourceTree = "<group>"; };
+		018500571A25E60000B039A6 /* ReimbursementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimbursementCell.m; sourceTree = "<group>"; };
+		018500581A25E60000B039A6 /* ReimbursementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReimbursementCell.xib; sourceTree = "<group>"; };
+		0185005B1A25E74100B039A6 /* black-double-arrow-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-double-arrow-hi.png"; sourceTree = "<group>"; };
+		0185005D1A25EF7600B039A6 /* ExpenseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseCell.h; sourceTree = "<group>"; };
+		0185005E1A25EF7600B039A6 /* ExpenseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseCell.m; sourceTree = "<group>"; };
+		0185005F1A25EF7600B039A6 /* ExpenseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseCell.xib; sourceTree = "<group>"; };
+		018500621A25F0CD00B039A6 /* Right-Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Right-Arrow.png"; sourceTree = "<group>"; };
+		018500641A25F7F400B039A6 /* TotalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalCell.h; sourceTree = "<group>"; };
+		018500651A25F7F400B039A6 /* TotalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalCell.m; sourceTree = "<group>"; };
+		018500661A25F7F400B039A6 /* TotalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TotalCell.xib; sourceTree = "<group>"; };
 		01BABAEF1A0960A1008964F7 /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupViewController.h; sourceTree = "<group>"; };
 		01BABAF01A0960A1008964F7 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
 		01BABAF21A0960AE008964F7 /* AddMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberViewController.h; sourceTree = "<group>"; };
@@ -127,6 +149,8 @@
 				01E9ECE81A06063B00F3B848 /* ReportViewController.m */,
 				01E9ECEA1A06065C00F3B848 /* MainViewController.h */,
 				01E9ECEB1A06065C00F3B848 /* MainViewController.m */,
+				018500531A258FAB00B039A6 /* ExpenseChart.h */,
+				018500541A258FAB00B039A6 /* ExpenseChart.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -134,6 +158,8 @@
 		01E9ECAF1A05F2A000F3B848 = {
 			isa = PBXGroup;
 			children = (
+				018500621A25F0CD00B039A6 /* Right-Arrow.png */,
+				0185005B1A25E74100B039A6 /* black-double-arrow-hi.png */,
 				01E9ECBA1A05F2A000F3B848 /* ExpenseShare */,
 				01E9ECD41A05F2A100F3B848 /* ExpenseShareTests */,
 				01E9ECB91A05F2A000F3B848 /* Products */,
@@ -152,8 +178,18 @@
 		01E9ECBA1A05F2A000F3B848 /* ExpenseShare */ = {
 			isa = PBXGroup;
 			children = (
+				696C1DE812754D4FB29CA851 /* Objects */,
 				01BABAF51A09700A008964F7 /* View Controllers */,
 				01E9ECC51A05F2A000F3B848 /* Main.storyboard */,
+				018500561A25E60000B039A6 /* ReimbursementCell.h */,
+				018500571A25E60000B039A6 /* ReimbursementCell.m */,
+				018500581A25E60000B039A6 /* ReimbursementCell.xib */,
+				0185005D1A25EF7600B039A6 /* ExpenseCell.h */,
+				0185005E1A25EF7600B039A6 /* ExpenseCell.m */,
+				0185005F1A25EF7600B039A6 /* ExpenseCell.xib */,
+				018500641A25F7F400B039A6 /* TotalCell.h */,
+				018500651A25F7F400B039A6 /* TotalCell.m */,
+				018500661A25F7F400B039A6 /* TotalCell.xib */,
 				01E9ECC81A05F2A000F3B848 /* Images.xcassets */,
 				01E9ECCA1A05F2A000F3B848 /* LaunchScreen.xib */,
 				01E9ECBB1A05F2A000F3B848 /* Supporting Files */,
@@ -163,7 +199,6 @@
 				696C193E5D7A1F0C9927F010 /* GCDAsyncSocket.m */,
 				696C1A6F0EE7D2A0AB59A1A1 /* ESPacket.h */,
 				696C10CD56C3B6678B195D96 /* ESPacket.m */,
-				696C1DE812754D4FB29CA851 /* Objects */,
 			);
 			path = ExpenseShare;
 			sourceTree = "<group>";
@@ -295,9 +330,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0185005A1A25E60000B039A6 /* ReimbursementCell.xib in Resources */,
 				01E9ECC71A05F2A000F3B848 /* Main.storyboard in Resources */,
+				018500681A25F7F400B039A6 /* TotalCell.xib in Resources */,
+				018500631A25F0CD00B039A6 /* Right-Arrow.png in Resources */,
 				01E9ECCC1A05F2A000F3B848 /* LaunchScreen.xib in Resources */,
 				01E9ECC91A05F2A000F3B848 /* Images.xcassets in Resources */,
+				018500611A25EF7600B039A6 /* ExpenseCell.xib in Resources */,
+				0185005C1A25E74100B039A6 /* black-double-arrow-hi.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,8 +357,11 @@
 			files = (
 				01BABAF41A0960AE008964F7 /* AddMemberViewController.m in Sources */,
 				01E9ECC41A05F2A000F3B848 /* ViewController.m in Sources */,
+				018500601A25EF7600B039A6 /* ExpenseCell.m in Sources */,
+				018500671A25F7F400B039A6 /* TotalCell.m in Sources */,
 				01E9ECE31A0604C900F3B848 /* AddExpenseViewController.m in Sources */,
 				01E9ECE91A06063B00F3B848 /* ReportViewController.m in Sources */,
+				018500591A25E60000B039A6 /* ReimbursementCell.m in Sources */,
 				01E9ECC11A05F2A000F3B848 /* AppDelegate.m in Sources */,
 				01C37E141A08A4BB0015BAAC /* GroupsViewController.m in Sources */,
 				01E9ECEC1A06065C00F3B848 /* MainViewController.m in Sources */,
@@ -330,6 +373,7 @@
 				696C17959D013A738D904080 /* GCDAsyncSocket.m in Sources */,
 				696C1C0816F86FDB00C2BF1E /* ESPacket.m in Sources */,
 				696C1F0E8A1758C921F9A1F9 /* User.m in Sources */,
+				018500551A258FAB00B039A6 /* ExpenseChart.m in Sources */,
 				696C18983F8DA5752FEFF627 /* Group.m in Sources */,
 				696C10483B66DCC3E5A40886 /* Expense.m in Sources */,
 				696C1DB9608CACB224F591BA /* Reimbursement.m in Sources */,

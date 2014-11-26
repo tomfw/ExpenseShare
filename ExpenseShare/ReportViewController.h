@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ReportViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet UITableView *reportTable;
 @end

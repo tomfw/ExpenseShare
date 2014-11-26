@@ -11,9 +11,12 @@
 #import "Group.h"
 #import "ESSConnection.h"
 #import "ESPacket.h"
+#import "User.h"
 
 @interface ReimburseViewController ()
-
+@property (strong, nonatomic) User *selected;
+@property (strong, nonatomic) NSArray *members;
+@property (nonatomic) NSInteger whoIndex;
 @end
 
 @implementation ReimburseViewController
@@ -26,9 +29,30 @@
     }
 }
 
+- (IBAction)whoPressed:(id)sender {
+    if(!self.members)
+        [self getMembers];
+
+    self.selected = self.members[(NSUInteger) self.whoIndex];
+    [self.whoButton setTitle:self.selected.userName forState:UIControlStateNormal];
+
+    self.whoIndex++;
+    if(self.whoIndex == self.members.count) self.whoIndex = 0;
+}
+
+- (void)getMembers {
+    NSMutableArray *mems = [NSMutableArray array];
+    for (NSNumber* key in self.group.users) {
+        [mems addObject:[self.group.users objectForKey:key]];
+    }
+    for (User *mem in mems) {
+        NSLog(@"%@",mem.userName);
+    }
+    self.members = [mems copy];
+}
 
 - (IBAction)savePressed:(id)sender {
-    Reimbursement *new = [Reimbursement reimbursementFrom:self.userID to:0 inGroup:self.group.grpID];
+    Reimbursement *new = [Reimbursement reimbursementFrom:self.userID to:self.selected.userID inGroup:self.group.grpID];
     new.amount = [[[NSNumberFormatter new] numberFromString:self.amtField.text] doubleValue];
     new.memo = self.memoField.text;
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth fromDate:[NSDate date]];

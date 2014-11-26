@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ESSConnection.h"
 
 @class Group;
+@class ExpenseChart;
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <ESSConnectionDelegate>
+@property (weak, nonatomic) IBOutlet ExpenseChart *chart;
 @property (strong, nonatomic) Group *group;
 @end

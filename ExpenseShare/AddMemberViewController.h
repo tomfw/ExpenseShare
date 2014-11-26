@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ESSConnection.h"
 
-@interface AddMemberViewController : UIViewController
+@interface AddMemberViewController : UIViewController <ESSConnectionDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *userTable;
 
 @end

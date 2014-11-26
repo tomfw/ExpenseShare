@@ -13,7 +13,7 @@
 
 @interface ReimburseViewController : UIViewController <ESSConnectionDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *amtField;
-@property (weak, nonatomic) IBOutlet UITextField *whoField;
+@property (weak, nonatomic) IBOutlet UIButton *whoButton;
 @property (weak, nonatomic) IBOutlet UITextField *memoField;
 @property (nonatomic) NSInteger userID;
 @property (nonatomic) NSInteger grpID;

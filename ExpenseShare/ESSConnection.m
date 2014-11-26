@@ -8,6 +8,9 @@
 #import "ESSConnection.h"
 #import "GCDAsyncSocket.h"
 #import "ESPacket.h"
+#import "Group.h"
+#import "Reimbursement.h"
+#import "Expense.h"
 
 #define TAG_WRITE_USER_ID 1
 #define TAG_SEND_PACKET 4
@@ -16,26 +19,119 @@
 @property(nonatomic, strong) GCDAsyncSocket *socket;
 @property (nonatomic) NSInteger userID;
 @property (strong, nonatomic) NSTimer *timer;
+@property (nonatomic) NSInteger lastHash;
+@property (strong, nonatomic) NSArray *groups;
+@property (strong, nonatomic) NSArray *expenses;
+@property (strong, nonatomic) NSArray *reimbursements;
 @end
 
 @implementation ESSConnection
 static ESSConnection *_connection = nil;
+
+-(double)expensesForUser:(NSInteger)userID {
+    double results = 0;
+
+    for (Expense *expense in self.expenses) {
+        if (expense.userID == userID) {
+            results += expense.amount;
+        }
+    }
+
+    for (Reimbursement *reimbursement in self.reimbursements) {
+        if (reimbursement.payerID == userID) {
+            results += reimbursement.amount;
+        }
+        if (reimbursement.payeeID == userID) {
+            results -= reimbursement.amount;
+        }
+    }
+
+    return results;
+}
+
+-(double)totalExpenses {
+    double result = 0;
+    double rmbs = 0;
+    for (Reimbursement *reimbursement in self.reimbursements) {
+        rmbs += reimbursement.amount;
+    }
+    for (Expense *expense in self.expenses) {
+        result += expense.amount;
+    }
+    if(rmbs > result) {
+        result += rmbs - result;
+    }
+    return result;
+}
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
 
     NSMutableData *message = [[NSMutableData alloc] initWithData:data];
     NSRange range = NSMakeRange(message.length - 4, 4);
     [message replaceBytesInRange:range withBytes:NULL length:0];
+    BOOL updated = NO;
 
     if(tag == TAG_READ_PACKET) {
         ESPacket *packet = [NSKeyedUnarchiver unarchiveObjectWithData:message];
         if (packet.code == ESPACKET_UPDATE_HASH) {
-            NSLog(@"Got the hash for the current group:%@",packet.object);
+            NSInteger hash = [(NSNumber*)packet.object integerValue];
+            if(hash != self.lastHash) {
+                self.lastHash = hash;
+                [self sendPacket:[ESPacket packetWithCode:ESPACKET_REQUEST_TRANSACTIONS object:nil]];
+                [self readPacket]; //read expenses
+                [self readPacket]; //read reimbursements
+            }
+        } else if (packet.code == ESPACKET_EXPENSES) {
+            updated = YES;
+            self.expenses = packet.object;
+        } else if (packet.code == ESPACKET_REIMBURSEMENTS) {
+            updated = YES;
+            self.reimbursements = packet.object;
+        } else if (packet.code == ESPACKET_GROUPS) {
+            NSArray *newList = packet.object;
+            if([self updateGroups: newList])
+                updated= YES;
+        } else {
+            //this request was probably initiated by our delegate!
+            //give him (or her) the response
+            [self.delegate readPacket:packet onConnection:self];
         }
-        [self.delegate readPacket:packet onConnection:self];
+
+        if(updated && [self.delegate respondsToSelector:@selector(updateMadeOnConnection:)]) {
+            [self.delegate updateMadeOnConnection:self];
+        }
     }
 }
 
+- (BOOL)updateGroups:(NSArray *)groupList {
+    if ([self areGroups:self.groups equalToGroups:groupList]) {
+        return NO;
+    }
+    self.groups = groupList;
+    for (Group *group in self.groups) {
+        if (group.grpID == self.group.grpID)
+            self.group = group;
+    }
+    return YES;
+}
+-(BOOL)areGroups:(NSArray *)groups equalToGroups:(NSArray *)otherGroups {
+    if(!groups || !otherGroups)
+        return NO;
+    if(groups.count != otherGroups.count)
+        return NO;
+
+    NSInteger members1 = 0;
+    NSInteger members2 = 0;
+
+    for (Group *group in groups) {
+        members1 += group.users.count;
+    }
+    for (Group *group in otherGroups) {
+        members2 +=group.users.count;
+    }
+
+    return members1 == members2;
+}
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
     if(tag == TAG_WRITE_USER_ID)
         NSLog(@"Sent user id");
@@ -58,14 +154,20 @@ static ESSConnection *_connection = nil;
     });
 }
 
+-(void)reload {
+    self.lastHash = 0;
+    [self update];
+}
+
 - (void)update {
-    NSLog(@"Hello? update?");
-    if(self.grpID > 1) {
-        NSLog(@"We need to update some stuff!");
-        [self sendPacket:[ESPacket packetWithCode:ESPACKET_REQUEST_UPDATE object:@(self.grpID)]];
+    if(self.group) {
+        [self sendPacket:[ESPacket packetWithCode:ESPACKET_REQUEST_UPDATE object:@(self.group.grpID)]];
+        [self readPacket];
+        [self sendPacket:[ESPacket packetWithCode:ESPACKET_REQUEST_GROUPS object:nil]];
         [self readPacket];
     } else {
-        [self sendPacket:[ESPacket packetWithCode:ESPACKET_OK object:nil]];
+        [self sendPacket:[ESPacket packetWithCode:ESPACKET_REQUEST_GROUPS object:nil]];
+        [self readPacket];
     }
 }
 
