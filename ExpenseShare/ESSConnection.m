@@ -83,12 +83,12 @@ static ESSConnection *_connection = nil;
             }
         } else if (packet.code == ESPACKET_EXPENSES) {
             updated = YES;
-            self.expenses = packet.object;
+            self.expenses = (NSArray*)packet.object;
         } else if (packet.code == ESPACKET_REIMBURSEMENTS) {
             updated = YES;
-            self.reimbursements = packet.object;
+            self.reimbursements = (NSArray*)packet.object;
         } else if (packet.code == ESPACKET_GROUPS) {
-            NSArray *newList = packet.object;
+            NSArray *newList = (NSArray*)packet.object;
             if([self updateGroups: newList])
                 updated= YES;
         } else {
@@ -140,6 +140,8 @@ static ESSConnection *_connection = nil;
 }
 
 -(void)sendPacket:(ESPacket *)packet {
+//    if(!self.isConnected)
+//        [self connect];
     [packet sendOnSocket:self.socket withTimeOut:30];
 }
 
@@ -150,7 +152,7 @@ static ESSConnection *_connection = nil;
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port {
     NSLog(@"We are connnnnnnected!");
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(update) userInfo:nil repeats:YES];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(update) userInfo:nil repeats:YES];
     });
 }
 
@@ -200,7 +202,7 @@ static ESSConnection *_connection = nil;
         dispatch_queue_t delegateQueue = dispatch_queue_create("delegateQueue", NULL);
         self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:delegateQueue];
         NSError *error = nil;
-        if (![self.socket connectToHost:@"192.168.1.254" onPort:7373 error:&error]) {
+        if (![self.socket connectToHost:@"tomfw.it.cx" onPort:7373 error:&error]) {
             NSLog(@"Error connecting: %@", error);
         }
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@(self.userID)];

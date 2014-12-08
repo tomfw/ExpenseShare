@@ -15,12 +15,51 @@
 #import "Group.h"
 #import "User.h"
 #import "TotalCell.h"
+#import "ESPacket.h"
+#import "AddExpenseViewController.h"
+#import "ReimburseViewController.h"
 
 @interface ReportViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *objects;
+@property(nonatomic, strong) id selection;
 @end
 
 @implementation ReportViewController
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    id obj = self.objects[(NSUInteger) indexPath.row];
+    self.selection = obj;
+    if ([obj isKindOfClass:[Expense class]]) {
+        [self performSegueWithIdentifier:@"SegToEditExpense" sender:self];
+    } else if ([obj isKindOfClass:[Reimbursement class]]) {
+        [self performSegueWithIdentifier:@"SegToEditReimbursement" sender:self];
+    }
+}
+
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    id obj = self.objects[(NSUInteger) indexPath.row];
+    if(![self isOurs:obj]) return UITableViewCellEditingStyleNone;
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    ESSConnection *connection = [ESSConnection connection];
+    [tableView beginUpdates];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSMutableArray *objs = [NSMutableArray arrayWithArray:self.objects];
+        id obj = self.objects[(NSUInteger) indexPath.row];
+        [objs removeObjectAtIndex:(NSUInteger) indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        self.objects = [objs copy];
+        [connection sendPacket:[ESPacket packetWithCode:ESPACKET_DELETE_OBJECT object:obj]];
+        [connection reload];
+    }
+    [tableView endUpdates];
+
+}
+
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [NSString stringWithFormat:@"Total Expenses: $%.2f",[[ESSConnection connection] totalExpenses]];
 }
@@ -29,6 +68,26 @@
     if(!self.objects)
         [self getObjects];
     return self.objects ? self.objects.count : 0;
+}
+
+-(BOOL)isOurs:(id)object {
+    ESSConnection *connection = [ESSConnection connection];
+
+    if ([object isKindOfClass:[Expense class]]) {
+        Expense *obj = object;
+        if (obj.userID == connection.userID) {
+            return YES;
+        }
+    }
+
+    if ([object isKindOfClass:[Reimbursement class]]) {
+        Reimbursement *obj = object;
+        if (obj.payerID == connection.userID) {
+            return YES;
+        }
+    }
+
+    return NO;
 }
 
 - (void)getObjects {
@@ -62,7 +121,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ESSConnection *connection = [ESSConnection connection];
     UITableViewCell *cell;
     id object = self.objects[(NSUInteger) indexPath.row];
     if ([object isKindOfClass:[Expense class]]) {
@@ -83,22 +141,7 @@
     } else {
         cell = self.objects[(NSUInteger) indexPath.row]; // total cell already prepared!
     }
-   /* if(indexPath.row < connection.expenses.count ) {
-        Expense *expense = connection.expenses[(NSUInteger) indexPath.row];
-        ExpenseCell *expenseCell = [tableView dequeueReusableCellWithIdentifier:@"ExpenseCell"];
-        if(!expenseCell)
-            expenseCell = [[NSBundle mainBundle] loadNibNamed:@"ExpenseCell" owner:self options:nil].firstObject;
-        expenseCell.expense = expense;
-        cell = expenseCell;
-    } else {
-        Reimbursement *reimbursement = connection.reimbursements[(NSUInteger) indexPath.row - connection.expenses.count];
-        ReimbursementCell *reimbursementCell = [tableView dequeueReusableCellWithIdentifier:@"ReimbursementCell"];
-        if(!reimbursementCell)
-            reimbursementCell = [[NSBundle mainBundle] loadNibNamed:@"ReimbursementCell" owner:self options:nil].firstObject;
 
-        reimbursementCell.reimbursement = reimbursement;
-        cell = reimbursementCell;
-    }*/
     return cell;
 }
 
@@ -113,14 +156,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"SegToEditExpense"]) {
+        AddExpenseViewController *dest = segue.destinationViewController;
+        dest.displayExpense = (Expense *)self.selection;
+    } else if ([segue.identifier isEqualToString:@"SegToEditReimbursement"]) {
+        ReimburseViewController *dest = segue.destinationViewController;
+        dest.display = (Reimbursement *)self.selection;
+    }
+
 }
-*/
+
 
 @end

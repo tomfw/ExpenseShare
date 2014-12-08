@@ -21,7 +21,7 @@
 @implementation AddMemberViewController
 - (void)readPacket:(ESPacket *)packet onConnection:(ESSConnection *)connection {
     if (packet.code == ESPACKET_ALL_USERS) {
-        self.users = packet.object;
+        self.users = (NSArray*)packet.object;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.userTable reloadData];
         });

@@ -26,8 +26,11 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(56.1%)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5x-a9-ftN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(56.1%)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5x-a9-ftN">
                         <rect key="frame" x="211" y="11" width="74" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="74" id="mvu-hg-WXw"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -37,6 +40,9 @@
                 <constraints>
                     <constraint firstItem="exk-IU-kBN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="8ov-7Z-4RE"/>
                     <constraint firstAttribute="centerX" secondItem="exk-IU-kBN" secondAttribute="centerX" id="A5C-NM-EXF"/>
+                    <constraint firstItem="k5x-a9-ftN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="fpe-p0-nfd"/>
+                    <constraint firstItem="k5x-a9-ftN" firstAttribute="leading" secondItem="exk-IU-kBN" secondAttribute="trailing" constant="8" id="lho-1w-Mdz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="k5x-a9-ftN" secondAttribute="bottom" constant="2" id="man-vO-cCn"/>
                     <constraint firstAttribute="centerY" secondItem="DXJ-fu-rHK" secondAttribute="centerY" constant="-0.5" id="nwY-tw-Fz8"/>
                     <constraint firstItem="DXJ-fu-rHK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pVX-Ih-UZy"/>
                 </constraints>

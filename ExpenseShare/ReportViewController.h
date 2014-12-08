@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class Expense;
+
 @interface ReportViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *reportTable;
 @end

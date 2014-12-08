@@ -11,11 +11,17 @@
 #import "ESPacket.h"
 #import "Group.h"
 
-@interface AddGroupViewController () <ESSConnectionDelegate>
+@interface AddGroupViewController () <ESSConnectionDelegate, UITextFieldDelegate>
 
 @end
 
 @implementation AddGroupViewController
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (void)readPacket:(ESPacket *)packet onConnection:(ESSConnection *)connection {
     if(packet.code == ESPACKET_OK) {
         NSLog(@"Added a group!");

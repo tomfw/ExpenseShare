@@ -9,7 +9,6 @@
 #import "MainViewController.h"
 #import "Group.h"
 #import "AddExpenseViewController.h"
-#import "ESSConnection.h"
 #import "ReimburseViewController.h"
 #import "ExpenseChart.h"
 #import "ESPacket.h"
@@ -37,6 +36,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:self.group.grpName];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self.chart setNeedsDisplay];
 }
 
 #pragma mark - Navigation

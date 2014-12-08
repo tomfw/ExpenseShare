@@ -10,11 +10,20 @@
 #import "ESSConnection.h"
 #import "ESPacket.h"
 
-@interface RegisterViewController () <ESSConnectionDelegate>
+@interface RegisterViewController () <ESSConnectionDelegate, UITextFieldDelegate>
 
 @end
 
 @implementation RegisterViewController
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)doneEditing:(UITextField *)sender {
+    [self.view resignFirstResponder];
+}
 
 - (void)readPacket:(ESPacket *)packet onConnection:(ESSConnection *)connection {
     if (packet.code == ESPACKET_ASSIGN_USERID) {

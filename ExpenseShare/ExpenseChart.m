@@ -64,15 +64,14 @@
         User *user = self.users[i];
         if(share) {
             [self drawWedgeOfPercent:share usingContext:ref inRect:rect fromPercent:start inColor:self.colors[i % self.colors.count]];
-            NSLog(@"Share for %@ %.1f",user.userName,share);
-        }
+       }
         start += share;
     }
 }
 
 -(void)drawKeysUsingContext:(CGContextRef)ref inRect:(CGRect)rect {
     CGFloat x = rect.origin.x;
-    CGFloat y = rect.origin.y + rect.size.height - 30;
+    CGFloat y = rect.origin.y + rect.size.height - 15;
     NSDictionary *attributes = @{@[NSFontAttributeName, NSForegroundColorAttributeName ] : @[[UIFont fontWithName:@"Helvetica" size:8.0], [UIColor blackColor]]};
 
     for (NSUInteger i = 0; i < self.users.count; ++i) {
@@ -96,9 +95,10 @@
 }
 
 -(void)drawWedgeOfPercent:(CGFloat)percent usingContext:(CGContextRef)ref inRect:(CGRect)rect fromPercent:(CGFloat)start inColor:(UIColor *)color {
+    CGFloat radius = rect.size.width <= rect.size.height ? (CGFloat) (rect.size.width * .35) : (CGFloat) (rect.size.height * .35);
     CGFloat thetaStart = (CGFloat) ((2 * M_PI) * (start / 100));
     CGFloat thetaEnd = (CGFloat) ((2 * M_PI) * (percent / 100) + thetaStart);
-    CGContextAddArc(ref, rect.size.width / 2, rect.size.height / 2, CHART_RADIUS, thetaStart, thetaEnd, 0);
+    CGContextAddArc(ref, rect.size.width / 2, rect.size.height / 2, radius, thetaStart, thetaEnd, 0);
     CGContextAddLineToPoint(ref, rect.size.width / 2, rect.size.height / 2);
     CGContextSetFillColor(ref, CGColorGetComponents([color CGColor]));
     CGContextFillPath(ref);
